@@ -43,28 +43,33 @@ Create a `.env` file in the `backend/` directory:
 ```env
 DATABASE_URL=postgresql+asyncpg://admin:password@localhost:5432/voice_agent
 REDIS_URL=redis://localhost:6379/0
-OPENAI_API_KEY=your_openai_key
-DEEPGRAM_API_KEY=your_deepgram_key
+GROQ_API_KEY=""
+DEEPGRAM_API_KEY=""
 ```
 
 ### 3. Run with Docker
 ```bash
-docker-compose up -d
+D:\voice-agent> docker-compose up -d
 ```
 This starts PostgreSQL and Redis.
 
 ### 4. Run Backend
 ```bash
-cd backend
+D:\voice-agent> cd backend
 python -m venv venv
 source venv/bin/activate # or venv\Scripts\activate on Windows
 pip install -r requirements.txt
-python main.py
+
+#important to come abck to global level
+cd ..
+D:\voice-agent> python -m uvicorn backend.main:app --reload
+                     
+                                                                                                 
 ```
 
 ### 5. Run Frontend
 ```bash
-cd frontend
+D:\voice-agent> cd frontend
 npm install
 npm run dev
 ```
