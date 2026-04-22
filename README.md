@@ -86,7 +86,8 @@ celery -A scheduler.celery_app worker --loglevel=info
 - **FastAPI:** Essential for high-performance, async WebSocket handling needed for low-latency audio streaming.
 - **PostgreSQL + Redis:** Postgres handles persistent patient history, while Redis powers lightning-fast session memory and Celery task queues.
 - **Next.js + Tailwind:** Delivers a premium, recruiter-impressive UI quickly.
-- **Deepgram + OpenAI + Edge-TTS/ElevenLabs:** The perfect combination for sub-500ms voice interactions. Deepgram provides real-time streaming STT, OpenAI processes tool calls, and TTS streams chunks back to the client.
+- **Deepgram + Groq + Edge-TTS/ElevenLabs:** The perfect combination for sub-500ms voice interactions. Deepgram provides real-time streaming STT, 
+GroqApi processes tool calls, and TTS streams chunks back to the client.
 
 ## Memory Strategy
 1. **Session Memory (Redis):** Stores the current conversational context, maintaining the context window for the LLM. Automatically expires after an hour to save resources.
@@ -94,7 +95,7 @@ celery -A scheduler.celery_app worker --loglevel=info
 
 ## Latency Breakdown
 - **STT (Deepgram):** ~100-150ms
-- **LLM (OpenAI gpt-4o-mini):** ~200-250ms for first token
+- **LLM (Groq |Api ):** ~200-250ms for first token
 - **TTS (Edge TTS streaming):** ~50-100ms for first audio chunk
 - **Total:** ~350-500ms
 
