@@ -41,7 +41,9 @@ graph TD
 ### 2. Environment Variables
 Create a `.env` file in the `backend/` directory:
 ```env
-DATABASE_URL=postgresql+asyncpg://admin:password@localhost:5432/voice_agent
+# docker - PostgreSql
+DATABASE_URL=postgresql+asyncpg://admin:password@localhost:5432/voice_agent 
+# docker - Redis
 REDIS_URL=redis://localhost:6379/0
 GROQ_API_KEY=""
 DEEPGRAM_API_KEY=""
